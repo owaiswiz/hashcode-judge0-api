@@ -303,7 +303,7 @@ languages = [
   },
   {
     name: "Assembly (NASM)",
-    source_file: "main.nasm",
+    source_file: "main.asm",
     compile_cmd: "nasm -f elf64 main.asm -o main.o && ld main.o -o main",
     run_cmd: "./main"
   }
