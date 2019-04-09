@@ -306,6 +306,18 @@ languages = [
     source_file: "main.asm",
     compile_cmd: "nasm -f elf64 main.asm -o main.o && ld main.o -o main",
     run_cmd: "./main"
+  },
+  {
+    name: "MongoDb (3.4)",
+    source_file: "main.js",
+    compile_cmd: "/usr/bin/nohup /usr/bin/mongod &>/dev/null &",
+    run_cmd: "/usr/bin/mongo main.js"
+  },
+  {
+    name: "Kotlin",
+    source_file: "main.kt",
+    compile_cmd: "/root/.sdkman/candidates/kotlin/current/bin/kotlinc main.kt -include-runtime -d test.jar",
+    run_cmd: "/usr/lib/jvm/java-8-openjdk-amd64/bin/java -jar test.jar"
   }
 ]
 

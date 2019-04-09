@@ -76,6 +76,7 @@ class IsolateJob < ApplicationJob
   def run
     command = "isolate #{cgroups} \
     #{Rails.env.development? ? '-v' : ''} \
+    #{submission.language.id == 49 ? '--share-net' : ''} \
     -b #{id} \
     -i #{STDIN_FILE} \
     -o #{STDOUT_FILE} \

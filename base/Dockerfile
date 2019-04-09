@@ -28,10 +28,29 @@ RUN set -xe && \
 RUN set -xe && \
     apt-get install nasm
 
+#MongoDB
+# Run via mongo filename.r
+RUN set -xe && \
+    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4 && \
+    echo "deb http://repo.mongodb.org/apt/debian jessie/mongodb-org/4.0 main" | tee /etc/apt/sources.list.d/mongodb-org-4.0.list && \
+    apt-get update && apt-get install -y mongodb-org && \
+    mkdir -p /data/db
+
+#Install kotlin
+# compile using kotlinc test.kt -include-runtime -d test.jar
+# run using java -jar test.jar
+RUN set -xe && \
+    wget -O sdk.install.sh "https://get.sdkman.io" && \
+    apt install zip unzip -y && \
+    bash sdk.install.sh && \
+    source "/root/.sdkman/bin/sdkman-init.sh" && \
+    sdk install kotlin
+
 RUN set -xe && \
     apt-get update && apt-get install -y locales && \
     echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && locale-gen
 ENV LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8
+
 
 
 

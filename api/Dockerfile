@@ -8,7 +8,8 @@ RUN apt-get update && \
       libpq-dev \
       nodejs-legacy \
       npm \
-      sudo
+      sudo \
+      vim
 
 ENV PATH "/usr/local/ruby-2.3.3/bin:/opt/.gem/bin:$PATH"
 ENV GEM_HOME "/opt/.gem/"
